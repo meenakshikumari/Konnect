@@ -10,8 +10,6 @@ func Load() {
 	viper.AutomaticEnv()
 	viper.SetConfigName("application")
 	viper.AddConfigPath("./")
-	viper.AddConfigPath("../")
-	viper.AddConfigPath("../../")
 	err := viper.ReadInConfig()
 	if err != nil {
 		return
@@ -21,22 +19,18 @@ func Load() {
 }
 
 type config struct {
-	Host                                   string
-	Port                                   int
-	Database                               DatabaseConfig
-	PostgresQueryTimeoutInMillisecond      int
-	PostgresSavedQueryTimeoutInMillisecond int
+	Host     string
+	Port     int
+	Database DatabaseConfig
 }
 
 var appConfig config
 
 func ValidateAppConfig() {
 	appConfig = config{
-		Host:                                   viperString("app_host", "localhost"),
-		Port:                                   viperInt("app_port", 8000),
-		Database:                               getDatabaseConfig(),
-		PostgresQueryTimeoutInMillisecond:      viperInt("postgres_query_timeout_in_millisecond", 500),
-		PostgresSavedQueryTimeoutInMillisecond: viperInt("postgres_saved_query_timeout_in_millisecond", 500),
+		Host:     viperString("app_host", "localhost"),
+		Port:     viperInt("app_port", 8000),
+		Database: getDatabaseConfig(),
 	}
 }
 
@@ -53,10 +47,8 @@ func Port() int {
 	return appConfig.Port
 }
 
-// Addr returns the interface address in host:port format
 func Addr() string {
 	return fmt.Sprintf("127.0.0.1:8000")
-	//return fmt.Sprintf("%s:%d", Host(), Port())
 }
 
 func viperString(config string, defaultVal ...string) string {

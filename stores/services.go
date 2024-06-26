@@ -2,6 +2,7 @@ package stores
 
 import (
 	"api/internal/models"
+	"api/pkg/errors"
 	"context"
 	"database/sql"
 	"fmt"
@@ -39,7 +40,7 @@ func (s *ServiceStore) FindByID(id int64) (*models.Service, error) {
 	if err != nil {
 		if err == sql.ErrNoRows {
 			logrus.Infof("[ServiceStore][FindByID] No Service Data found")
-			return nil, fmt.Errorf("no Service Data found")
+			return nil, errors.NewNotFoundError(fmt.Sprintf("no Service Data found with given serviceID: %v", id))
 		}
 		logrus.Errorf("[ServiceStore][FindAll] Failed to execute query: %v", err)
 		return nil, err
@@ -97,3 +98,13 @@ func (s *ServiceStore) FindAll(limit, offset int, sortOn, sortBy, nameContains s
 	}
 	return res, nil
 }
+
+//func (s *ServiceStore)Save(*models.Service)error{
+//	This api will save the service to the services table with all the provided data
+// query := `
+//		INSERT INTO services (id, name, description)
+//		VALUES ($1, $2, $3)
+//		ON CONFLICT (id) DO UPDATE
+//		SET name = excluded.name,
+//			description = excluded.description;
+//}

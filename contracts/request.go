@@ -58,7 +58,6 @@ func (r *GetAllApiServiceRequestParams) Validate() (*GetAllApiServiceRequestVal,
 			return nil, errors.NewInvalidValueError(r.Page, "page number value is not correct. It should be integer value")
 		}
 		req.Page = page
-		//return req, nil // this will return in case of all api-services call
 	} else if r.Page == "" {
 		req.Page = 1
 	}

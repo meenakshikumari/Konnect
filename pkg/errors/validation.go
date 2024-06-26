@@ -5,6 +5,7 @@ const (
 	CodeValidationError  = "konnect:error:validation"
 	CodeInternalError    = "konnect:error:internal"
 	CodeMissingField     = "konnect:error:missing_field"
+	CodeNotFoundError    = "konnect:error:not_found"
 )
 
 type ValidationError struct {

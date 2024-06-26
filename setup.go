@@ -7,45 +7,7 @@ import (
 	"api/pkg/server"
 	"api/stores"
 	"github.com/sirupsen/logrus"
-	"github.com/spf13/cobra"
 )
-
-func newCLI() *cobra.Command {
-	cli := &cobra.Command{
-		Use:   "Konnect",
-		Short: "Konnect is a Service",
-	}
-
-	cli.AddCommand(newServeCmd())
-	cli.AddCommand(newMigrateCmd())
-
-	return cli
-}
-
-func newServeCmd() *cobra.Command {
-	return &cobra.Command{
-		Use:     "server",
-		Short:   "Start HTTP API server",
-		Aliases: []string{"serve", "start"},
-		Run: func(_ *cobra.Command, _ []string) {
-			StartServer()
-		},
-	}
-}
-
-func newMigrateCmd() *cobra.Command {
-	return &cobra.Command{
-		Use:   "migrate",
-		Short: "Perform db migration",
-		Run: func(_ *cobra.Command, _ []string) {
-			config.Load()
-			err := runDatabaseMigrations()
-			if err != nil {
-				return
-			}
-		},
-	}
-}
 
 func StartServer() {
 	config.Load()

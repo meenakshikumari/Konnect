@@ -1,0 +1,16 @@
+insert into services(id, name, description) VALUES
+        (1,'API Service 1', 'API Svc 1 desc test data'),
+        (2,'API Service 2', 'API Svc 1 desc test data'),
+        (3,'API Service 3', 'API Svc 1 desc test data'),
+        (4,'API Service 4', 'API Svc 1 desc test data'),
+        (5,'API Service 5', 'API Svc 1 desc test data'),
+        (6,'API Service 6', 'API Svc 1 desc test data'),
+        (7,'API Service 7', 'API Svc 1 desc test data'),
+        (8,'API Service 8', 'API Svc 1 desc test data'),
+        (9,'API Service 9', 'API Svc 1 desc test data'),
+        (10,'API Service 10', 'API Svc 1 desc test data'),
+        (11,'API Service 11', 'API Svc 1 desc test data'),
+        (12,'API Service 1', 'API Svc 1 desc test data'),
+        (13,'API Service 2', 'API Svc 1 desc test data'),
+        (14,'API Service 4', 'API Svc 1 desc test data'),
+        (15,'API Service 1', 'API Svc 1 desc test data');

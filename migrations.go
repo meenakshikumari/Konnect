@@ -34,10 +34,6 @@ func createMigrate() *migrate.Migrate {
 		log.Fatal(err)
 	}
 	defer db.Close()
-	//db, err := sql.Open("postgres", config.Database().String())
-	//if err != nil {
-	//	logrus.Fatalf("failed to load the database: %s", err)
-	//}
 
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {

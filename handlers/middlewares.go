@@ -31,3 +31,9 @@ func contains(arr []string, item string) bool {
 
 	return false
 }
+
+// func isUserAuthorised(userID, scopes, flow)bool{
+// this api will check the Authorization Bearer token and is valid or not
+// if valid then further check the scope of the user is eligible to make particular api call
+// if not return false else return true
+//}

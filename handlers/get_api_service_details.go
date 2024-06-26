@@ -13,6 +13,11 @@ func GetAPIServiceDetailsHandler(svc APISvc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		params := mux.Vars(r)
 		serviceID := params["service_id"]
+		if serviceID == "" {
+			logrus.Errorf("[GetAPIServiceDetailsHandler]serviceID not present")
+			handleError(w, errors.NewMissingFieldError("ServiceID is missing"))
+			return
+		}
 		id, err := strconv.Atoi(serviceID)
 		if err != nil {
 			logrus.Errorf("[GetAPIServiceDetailsHandler]Failed to validate serviceID: %s", err.Error())

@@ -26,11 +26,3 @@ func getDatabaseConfig() DatabaseConfig {
 func (dc DatabaseConfig) String() string {
 	return fmt.Sprintf("dbname=%s user=%s password='%s' host=%s port=%d sslmode=disable", dc.Name, dc.Username, dc.Password, dc.Host, dc.Port)
 }
-
-func PostgresQueryTimeoutInMillisecond() int {
-	return appConfig.PostgresQueryTimeoutInMillisecond
-}
-
-func PostgresSavedQueryTimeoutInMillisecond() int {
-	return appConfig.PostgresSavedQueryTimeoutInMillisecond
-}

@@ -9,21 +9,24 @@ import (
 
 func handleError(w http.ResponseWriter, err error) {
 	var httpErr httpError
-	//var errorSpecificCode string
 	switch err.(type) {
 	case errors.ValidationError:
 		valErr := err.(errors.ValidationError)
 		logrus.Errorf("validation failed: Error: %v, Details: %v", valErr.Code, err.(errors.ValidationError).Details)
-		//errorSpecificCode = valErr.ErrorCode()
 		httpErr = httpError{
 			GenericError: err.(errors.ValidationError).GenericError,
 			StatusCode:   http.StatusBadRequest,
+		}
+	case errors.NotFoundError:
+		logrus.Errorf("data not found")
+		httpErr = httpError{
+			GenericError: err.(errors.NotFoundError).GenericError,
+			StatusCode:   http.StatusNotFound,
 		}
 
 	default:
 		inErr := errors.NewInternalError(err)
 		logrus.Errorf("unexpected error: %v", err)
-		//errorSpecificCode = inErr.ErrorCode()
 		httpErr = httpError{
 			GenericError: inErr.GenericError,
 			StatusCode:   http.StatusInternalServerError,
