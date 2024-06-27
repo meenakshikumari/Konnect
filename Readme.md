@@ -94,7 +94,8 @@ Docker Up and Running for postgres
 Used **Postgresql:14** as database as the schema is predefined and in future case it will joins in adjoining child tables
 
 **DB SCHEMA**
-Link: https://dbdiagram.io/d/Konnect-DB-Schema-667c0a5e9939893dae52f94e
+Here is the Database Schema
+<img width="1304" alt="Screenshot 2024-06-27 at 8 40 47 AM" src="https://github.com/meenakshikumari/Konnect/assets/9154721/1fa75632-dc97-49d5-a5ae-f7d47e33d2c1">
 Here we have Services and Versions table which we have implemented. Documents and ServiceData can be added for extending
 the functionality to provided more details for the api services and versions.
 
